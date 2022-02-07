@@ -1,0 +1,50 @@
+# Editor
+set editor=vim
+
+# Email Signature
+set signature=~/.mutt/joaosignature.sig
+
+# About-me
+set from="mail@gmail.com"
+set realname="João Vitor Mendes Pinto dos Santos"
+
+# Imap settings
+set imap_user="mail@gmail.com"
+set imap_pass=""
+
+# Smtp settings
+set smtp_url="smtps://mail@smtp.gmail.com"
+set smtp_pass=""
+
+# TLS
+set ssl_starttls=yes
+set ssl_force_tls=yes
+
+# Remote Gmail folders
+set folder="imaps://imap.gmail.com/"
+set spoolfile="+INBOX"
+set postponed="+[Gmail]/Drafts"
+set record="+[Gmail]/Sent Mail"
+set trash="+[Gmail]/Trash"
+set header_cache="~/.mutt/cache/headers"
+set message_cachedir="~/.mutt/cache/bodies"
+set certificate_file=~/.mutt/certificates
+
+# update a buffer
+set timeout=20
+
+# GPG
+source ~/.mutt/gpg.rc
+
+# Colors
+color hdrdefault cyan default
+color attachment yellow default
+color header brightyellow default "From: "
+color header brightyellow default "Subject: "
+color header brightyellow default "Date: "
+color quoted green default
+color quoted1 cyan default
+color quoted2 green default
+color quoted3 cyan default
+color error red default
+
