@@ -4,121 +4,48 @@
 # date: 08/02/2022
 # author: João Vitor Mendes Pinto dos Santos <joao.vitor.mendes.pinto@gmail.com>
 # github: https://github.com/juauzitor
-# version: 0.0.1
+# version: 0.0.4
 
-mkdir $HOME/.var/log/organizador
+# Create a log/organizador if then it doesn't exist and the temp log file.
+mkdir -p $HOME/.var/log/organizador
 touch $HOME/.var/log/organizador/log.temp
-
+# If the type is out of range
+printf "If any file name is printed probably\nThis file extension is not in the switch case range or this is a directory\nYou need to organize this file manually or add it to the switch case range and rerun the script\n"
+echo "------------------------------------------------------------"
+#read the dir and move the files
 for i in $HOME/Downloads/*;do 
     case `echo "$i" | sed 's/.*\.//'` in
-        # Documentos
-        "pdf") 
-            echo "pdf"
+        # Documents
+        "pdf"|"iso"|"oxt"|"torrent"|"xlsx") 
             echo "$i" >> $HOME/.var/log/organizador/log.temp
-            echo "-------"
+            # "`echo "$i"`" is for add "" in files names to pass names with spaces
+            mv "`echo "$i"`" $HOME/Documents/
         ;;
-        "iso") 
-            echo "iso"
+        # Images
+        "jpg"|"jpeg"|"png") 
             echo "$i" >> $HOME/.var/log/organizador/log.temp
-            echo "-------"
+            mv "`echo "$i"`" $HOME/Pictures/
         ;;
-        "oxt") 
-            echo "oxt"
+        # Packages
+        "deb"|"7z"|"bz2"|"AppImage"|"appimage"|"gz"|"rar"|"xz"|"zip"|"exe")
             echo "$i" >> $HOME/.var/log/organizador/log.temp
-            echo "-------"
-        ;;
-        "torrent") 
-            echo "torrent"
-            echo "$i" >> $HOME/.var/log/organizador/log.temp
-            echo "-------"
-        ;;
-        "xlsx") 
-            echo "xlsx"
-            echo "$i" >> $HOME/.var/log/organizador/log.temp
-            echo "-------"
-        ;;
-        # Imagens
-        "jpg") 
-            echo "jpg"
-            echo "$i" >> $HOME/.var/log/organizador/log.temp
-            echo "-------"
-        ;;
-        "jpeg")
-            echo "jpeg"
-            echo "$i" >> $HOME/.var/log/organizador/log.temp
-            echo "-------"
-        ;;
-        "png") 
-            echo "png"
-            echo "$i" >> $HOME/.var/log/organizador/log.temp
-            echo "-------"
-        ;;
-        # Pacotes
-        "deb")
-            echo "deb"
-            echo "$i" >> $HOME/.var/log/organizador/log.temp
-            echo "-------"
-        ;;
-        "7z") 
-            echo "7z"
-            echo "$i" >> $HOME/.var/log/organizador/log.temp
-            echo "-------"
-        ;;
-        "AppImage"|"appimage") 
-            echo "appimage"
-            echo "$i" >> $HOME/.var/log/organizador/log.temp
-            echo "-------"
-        ;;
-        "bz2") 
-            echo "bz2"
-            echo "$i" >> $HOME/.var/log/organizador/log.temp
-            echo "-------"
-        ;;
-        "exe") 
-            echo "exe"
-            echo "$i" >> $HOME/.var/log/organizador/log.temp
-            echo "-------"
-        ;;
-        "gz") 
-            echo "gz"
-            echo "$i" >> $HOME/.var/log/organizador/log.temp
-            echo "-------"
-        ;;
-        "rar") 
-            echo "rar"
-            echo "$i" >> $HOME/.var/log/organizador/log.temp
-            echo "-------"
-        ;;
-        "xz") 
-            echo "xz"
-            echo "$i" >> $HOME/.var/log/organizador/log.temp
-            echo "-------"
-        ;;
-        "zip") 
-            echo "zip"
-            echo "$i" >> $HOME/.var/log/organizador/log.temp
-            echo "-------"
+            mv "`echo "$i"`" $HOME/Documents/archives/programs/packages/
         ;;
         # Linguagens de programação
-        "c") 
-            echo "c"
+        "c"|"h"|"cpp"|"hpp"|"cc") 
             echo "$i" >> $HOME/.var/log/organizador/log.temp
-            echo "-------"
+            mv "`echo "$i"`" $HOME/Documents/archives/projects/mcode/c++/
         ;;
         "py") 
-            echo "py"
             echo "$i" >> $HOME/.var/log/organizador/log.temp
-            echo "-------"
+            mv "`echo "$i"`" $HOME/Documents/archives/projects/mcode/python/
         ;;
         "r") 
-            echo "r"
             echo "$i" >> $HOME/.var/log/organizador/log.temp
-            echo "-------"
+            mv "`echo "$i"`" $HOME/Documents/archives/projects/mcode/R/
         ;;
         *) 
-            echo default
-            echo "$i" >> $HOME/.var/log/organizador/log.temp
-            echo "-------"
+            echo "$i"
         ;;
     esac
 done
@@ -128,4 +55,5 @@ mv $HOME/.var/log/organizador/log.temp  $HOME/.var/log/organizador/"log `date "+
 # Revoke write and execute permission
 chmod 444 $HOME/.var/log/organizador/"`find $HOME/.var/log/organizador/ -type f -printf "%p\\n"|sort|sed -e 's/.*\///' -e '$p' -e '1,$d'`"
 # Message from the end of script  
-echo "Os arquivos foram organizados"
+echo "------------------------------------------------------------"
+echo "The script ended, the files were moved and the log added in ~/.var/organizador"
