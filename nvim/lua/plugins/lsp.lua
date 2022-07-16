@@ -7,8 +7,13 @@ local has_any_words_before = function()
 end
 
 require'lspconfig'.clangd.setup{}
-require'lspconfig'.rust_analyzer.setup{}
-require "lsp_signature".setup()
+require'lspconfig'.pylsp.setup{}
+--require'lspconfig'.rust_analyzer.setup{}
+--require'lspconfig'.html.setup{}
+--require'lspconfig'.tsserver.setup{}
+--require'lspconfig'.cssls.setup{}
+--require'lspconfig'.jdtls.setup{}
+--require "lsp_signature".setup()
 vim.o.completeopt = 'menuone,noselect'
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

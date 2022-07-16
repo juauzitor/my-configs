@@ -16,7 +16,7 @@ if dot_git_exists() then
   branch = '-branch'
 else 
   branch = '-📁'
-  --branch = '-  '
+  branch = '-  '
 end
 
 local function get_var(my_var_name)
@@ -67,6 +67,9 @@ require('staline').setup{
     v  = "#D71B39"
   }
 }
+
+-- Nvim-tree
+require("nvim-tree").setup()
 
 -- Para o Colorizer
 require'colorizer'.setup()

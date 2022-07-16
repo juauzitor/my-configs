@@ -16,9 +16,8 @@ echo "------------------------------------------------------------"
 for i in $HOME/Downloads/*;do 
     case `echo "$i" | sed 's/.*\.//'` in
         # Documents
-        "pdf"|"iso"|"oxt"|"torrent"|"xlsx") 
+        "pdf"|"iso"|"oxt"|"torrent"|"xlsx"|"PDF"|"docx"|"pptx"|"epub"|"csv"|"ppt"|"odt"|"bin"|"ods") 
             echo "$i" >> $HOME/.var/log/organizador/log.temp
-            # "`echo "$i"`" is for add "" in files names to pass names with spaces
             mv "`echo "$i"`" $HOME/Documents/
         ;;
         # Images
@@ -29,20 +28,20 @@ for i in $HOME/Downloads/*;do
         # Packages
         "deb"|"7z"|"bz2"|"AppImage"|"appimage"|"gz"|"rar"|"xz"|"zip"|"exe")
             echo "$i" >> $HOME/.var/log/organizador/log.temp
-            mv "`echo "$i"`" $HOME/Documents/archives/programs/packages/
+            mv "`echo "$i"`" $HOME/Documents/archives/
         ;;
         # Linguagens de programação
         "c"|"h"|"cpp"|"hpp"|"cc") 
             echo "$i" >> $HOME/.var/log/organizador/log.temp
-            mv "`echo "$i"`" $HOME/Documents/archives/projects/mcode/c++/
+            mv "`echo "$i"`" $HOME/Documents/archives/librarys
         ;;
         "py") 
             echo "$i" >> $HOME/.var/log/organizador/log.temp
-            mv "`echo "$i"`" $HOME/Documents/archives/projects/mcode/python/
+            mv "`echo "$i"`" $HOME//Documents/archives/librarys
         ;;
         "r") 
             echo "$i" >> $HOME/.var/log/organizador/log.temp
-            mv "`echo "$i"`" $HOME/Documents/archives/projects/mcode/R/
+            mv "`echo "$i"`" $HOME//Documents/archives/librarys
         ;;
         *) 
             echo "$i"
