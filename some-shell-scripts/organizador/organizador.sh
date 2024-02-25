@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # script: organizador
 # describe: A simple shell script to organize files and clean the downloads directory
-# date: 08/02/2022
-# author: João Vitor Mendes Pinto dos Santos <joao.vitor.mendes.pinto@gmail.com>
+# date: 25/02/2024
+# author: João Vitor Mendes Pinto dos Santos <joao.v.m.p.santos@ieee.org> <joao.vitor.mendes.pinto@gmail.com>
 # github: https://github.com/juauzitor
-# version: 0.0.4
+# version: 0.0.5
 
 # Create a log/organizador if then it doesn't exist and the temp log file.
 mkdir -p $HOME/.var/log/organizador
@@ -16,12 +16,12 @@ echo "------------------------------------------------------------"
 for i in $HOME/Downloads/*;do 
     case `echo "$i" | sed 's/.*\.//'` in
         # Documents
-        "pdf"|"iso"|"oxt"|"torrent"|"xlsx"|"PDF"|"docx"|"pptx"|"epub"|"csv"|"ppt"|"odt"|"bin"|"ods") 
+        "pdf"|"iso"|"oxt"|"torrent"|"xlsx"|"PDF"|"docx"|"pptx"|"epub"|"csv"|"ppt"|"odt"|"bin"|"ods"|"odp"|"doc") 
             echo "$i" >> $HOME/.var/log/organizador/log.temp
             mv "`echo "$i"`" $HOME/Documents/
         ;;
         # Images
-        "jpg"|"jpeg"|"png") 
+        "jpg"|"jpeg"|"png"|"svg") 
             echo "$i" >> $HOME/.var/log/organizador/log.temp
             mv "`echo "$i"`" $HOME/Pictures/
         ;;
@@ -29,19 +29,6 @@ for i in $HOME/Downloads/*;do
         "deb"|"7z"|"bz2"|"AppImage"|"appimage"|"gz"|"rar"|"xz"|"zip"|"exe")
             echo "$i" >> $HOME/.var/log/organizador/log.temp
             mv "`echo "$i"`" $HOME/Documents/archives/
-        ;;
-        # Linguagens de programação
-        "c"|"h"|"cpp"|"hpp"|"cc") 
-            echo "$i" >> $HOME/.var/log/organizador/log.temp
-            mv "`echo "$i"`" $HOME/Documents/archives/librarys
-        ;;
-        "py") 
-            echo "$i" >> $HOME/.var/log/organizador/log.temp
-            mv "`echo "$i"`" $HOME//Documents/archives/librarys
-        ;;
-        "r") 
-            echo "$i" >> $HOME/.var/log/organizador/log.temp
-            mv "`echo "$i"`" $HOME//Documents/archives/librarys
         ;;
         *) 
             echo "$i"
